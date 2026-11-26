@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e6ebe5"/><stop offset="1" stop-color="#f7f6f2"/></linearGradient>
+    <linearGradient id="light" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#dfe8e2"/></linearGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#wall)"/>
+  <path d="M250 640V330a150 150 0 0 1 300 0v310z" fill="url(#light)"/>
+  <path d="M400 180v460M250 430h300" stroke="#cfd8d1" stroke-width="6"/>
+  <rect y="700" width="800" height="300" fill="#e2e5de"/>
+  <path d="M0 700h800" stroke="#cfd4cc" stroke-width="2"/>
+  <path d="M170 760c0-40 30-60 90-60h220c50 0 70 20 90 50l40 70H170z" fill="#2f5d5a" opacity=".85"/>
+  <rect x="360" y="820" width="40" height="110" rx="12" fill="#244a48" opacity=".8"/>
+  <ellipse cx="380" cy="935" rx="120" ry="14" fill="#1f2a2c" opacity=".08"/>
+  <path d="M640 700c-10-90 20-160 60-200-30 70-20 140-10 200z" fill="#a9c2b6"/>
+  <path d="M660 700c20-80 70-130 110-150-40 50-60 100-70 150z" fill="#8fae9f"/>
+  <rect x="620" y="690" width="90" height="70" rx="10" fill="#f7f6f2"/>
+</svg>
