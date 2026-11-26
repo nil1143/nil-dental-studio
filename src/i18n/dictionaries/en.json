@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Nil Dental Studio",
-    "description": "Calm, unhurried dental care. Browse treatments and book your visit online."
+    "description": "Calm, unhurried dental care. Browse services and book your visit online."
   },
   "a11y": {
     "skipToContent": "Skip to main content"
@@ -10,58 +10,180 @@
     "brand": "Nil Dental Studio",
     "homeLink": "Nil Dental Studio, home page",
     "bookVisit": "Book a visit",
-    "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    "nav": {
+      "services": "Services"
+    }
+  },
+  "services": {
+    "duration": "{minutes} min",
+    "durationLabel": "Duration",
+    "priceLabel": "Price",
+    "price": "from {price}",
+    "items": {
+      "checkup": {
+        "name": "Check-up and consultation",
+        "description": "A full examination, a clear explanation of what we see and a plan you can take home.",
+        "details": [
+          "Your first visit, or your regular one. We look at your teeth, gums and bite, take digital X-rays if they are needed, and tell you plainly what we see.",
+          "You leave with a written plan in order of priority, with the cost of each step, so you can decide what to do and when."
+        ],
+        "expect": [
+          "A short conversation about your health and any concerns",
+          "A full examination of teeth, gums and bite",
+          "Digital X-rays only where they add something",
+          "A written plan with costs, in order of priority"
+        ]
+      },
+      "hygiene": {
+        "name": "Hygiene and cleaning",
+        "description": "Scaling, polishing and practical advice to keep your gums healthy between visits.",
+        "details": [
+          "A thorough clean by our hygienist to remove tartar and staining that brushing at home cannot reach.",
+          "We take our time, explain what we are doing as we go, and show you simple ways to look after your gums between visits."
+        ],
+        "expect": [
+          "A check of your gum health",
+          "Scaling to remove tartar above and below the gum line",
+          "Polishing to remove surface stains",
+          "Practical advice for brushing and cleaning between teeth"
+        ]
+      },
+      "fillings": {
+        "name": "Fillings",
+        "description": "Tooth-coloured fillings that restore strength and blend with your natural teeth.",
+        "details": [
+          "When decay or a small fracture has damaged a tooth, we remove the damaged part and rebuild it with a tooth-coloured composite.",
+          "The tooth is fully numbed first. We keep as much healthy tooth as possible and shape the filling to fit your bite."
+        ],
+        "expect": [
+          "Local anaesthetic so you feel no pain",
+          "Gentle removal of decay",
+          "A tooth-coloured filling matched to your shade",
+          "A bite check and polish before you leave"
+        ]
+      },
+      "root-canals": {
+        "name": "Root canal treatment",
+        "description": "Infection removed from inside the tooth under full numbing, so you keep your natural tooth.",
+        "details": [
+          "When the nerve inside a tooth is infected or inflamed, root canal treatment removes the infection and saves the tooth.",
+          "It is done under full numbing at a calm, steady pace. Some teeth need a second visit; we tell you in advance if yours does."
+        ],
+        "expect": [
+          "An X-ray to plan the treatment",
+          "Full numbing before we begin",
+          "Cleaning and sealing of the root canals",
+          "A temporary or permanent filling, and aftercare advice"
+        ]
+      },
+      "extractions": {
+        "name": "Extractions",
+        "description": "When a tooth cannot be saved, a planned and gentle removal with written aftercare.",
+        "details": [
+          "Sometimes a tooth cannot be saved. When that happens, we plan the removal carefully and make it as gentle as possible.",
+          "We talk through the options for replacing the tooth, if you want one, before we begin."
+        ],
+        "expect": [
+          "An examination and X-ray beforehand",
+          "Full numbing before we begin",
+          "A careful, unhurried removal",
+          "Written aftercare and a follow-up check"
+        ]
+      },
+      "whitening": {
+        "name": "Teeth whitening",
+        "description": "Gentle in-clinic whitening, planned around your sensitivity and the result you want.",
+        "details": [
+          "Professional whitening lightens the natural colour of your teeth safely, under supervision.",
+          "We check your teeth and gums first, agree a realistic shade with you, and plan around any sensitivity."
+        ],
+        "expect": [
+          "A check that whitening is right for you",
+          "Your starting shade recorded",
+          "Protection for your gums during treatment",
+          "Advice on keeping the result"
+        ]
+      },
+      "veneers": {
+        "name": "Porcelain veneers",
+        "description": "Thin porcelain shells that reshape chipped, worn or uneven front teeth. Price per tooth.",
+        "details": [
+          "Veneers are thin porcelain shells bonded to the front of teeth to change their shape, colour or length.",
+          "We plan them with you, show you a preview before anything is made, and remove as little natural tooth as possible."
+        ],
+        "expect": [
+          "A consultation about the result you want",
+          "A preview of the planned shape and shade",
+          "Preparation and impressions or a digital scan",
+          "Fitting at a second visit"
+        ]
+      },
+      "implants": {
+        "name": "Implant consultation",
+        "description": "An unhurried assessment of whether implants suit you, with costs and timings in writing.",
+        "details": [
+          "An implant replaces a missing tooth with a titanium post and a crown. This first visit is about whether it is the right choice for you.",
+          "We examine the area, take the imaging we need, and give you the treatment plan, costs and timings in writing. There is no obligation to go ahead."
+        ],
+        "expect": [
+          "An examination of the gap and the surrounding teeth",
+          "Imaging to assess the bone",
+          "An honest discussion of the alternatives",
+          "A written plan with costs and timings"
+        ]
+      },
+      "emergency": {
+        "name": "Urgent appointment",
+        "description": "Toothache, a broken tooth or swelling. We keep time free every day for urgent care.",
+        "details": [
+          "Toothache, a broken tooth, a lost filling or swelling: we keep time free every day we are open for urgent problems.",
+          "The aim of this visit is to find the cause and get you out of pain. If you need further treatment, we plan it with you."
+        ],
+        "expect": [
+          "A focused examination of the problem",
+          "An X-ray if it is needed",
+          "Treatment to relieve pain where possible",
+          "A clear plan for any follow-up"
+        ]
+      }
+    },
+    "detail": {
+      "metaTitle": "{name} · Nil Dental Studio",
+      "back": "All services",
+      "aboutTitle": "About this service",
+      "expectTitle": "What to expect",
+      "summaryTitle": "At a glance"
+    }
+  },
+  "servicesPage": {
+    "metaTitle": "Services and prices · Nil Dental Studio",
+    "metaDescription": "Every service we offer, with how long it takes and what it costs, in PLN.",
+    "eyebrow": "Services and prices",
+    "title": "Our services",
+    "lead": "Each visit lists how long it takes and its starting price in PLN. If your treatment needs more, we explain why and agree the cost with you before we continue."
   },
   "home": {
     "hero": {
       "eyebrow": "Dental care in Warsaw",
       "title": "Unhurried dental care, in a room that feels calm.",
-      "lead": "Choose a treatment, pick a time that suits you and pay securely online. We explain every step before we begin.",
+      "lead": "Choose a service, pick a time that suits you and pay securely online. We explain every step before we begin.",
       "secondaryCta": "See opening hours",
       "imageAlt": "Placeholder image of a bright, quiet treatment room",
       "assurances": ["Prices shown upfront", "Appointments six days a week", "English and Polish spoken"]
     },
     "services": {
-      "eyebrow": "Treatments",
+      "eyebrow": "Services",
       "title": "Care for every stage, from check-ups to implants",
       "lead": "Every price below is the starting price of the visit. If your treatment needs more, we tell you before we continue.",
-      "duration": "{minutes} min",
-      "durationLabel": "Duration",
-      "priceLabel": "Price",
-      "price": "from {price}",
-      "items": {
-        "checkup": {
-          "name": "Check-up and consultation",
-          "description": "A full examination, a clear explanation of what we see and a plan you can take home."
-        },
-        "hygiene": {
-          "name": "Hygiene and cleaning",
-          "description": "Scaling, polishing and practical advice to keep your gums healthy between visits."
-        },
-        "fillings": {
-          "name": "Fillings",
-          "description": "Tooth-coloured fillings that restore strength and blend with your natural teeth."
-        },
-        "whitening": {
-          "name": "Teeth whitening",
-          "description": "Gentle in-clinic whitening, planned around your sensitivity and the result you want."
-        },
-        "implants": {
-          "name": "Implant consultation",
-          "description": "An unhurried assessment of whether implants suit you, with costs and timings in writing."
-        },
-        "emergency": {
-          "name": "Urgent appointment",
-          "description": "Toothache, a broken tooth or swelling. We keep time free every day for urgent care."
-        }
-      }
+      "seeAll": "See all services"
     },
     "steps": {
       "eyebrow": "How a visit works",
       "title": "Four simple steps, no surprises",
       "items": [
         {
-          "title": "Choose your treatment",
+          "title": "Choose your service",
           "body": "See what each visit includes, how long it takes and what it costs."
         },
         {

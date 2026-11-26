@@ -9,13 +9,19 @@ export function SiteHeader({ locale, dict }: { locale: Locale; dict: Dictionary[
         <Link
           href={`/${locale}`}
           aria-label={dict.homeLink}
-          className="font-display text-h3"
+          className="font-display text-h3 whitespace-nowrap"
         >
           {dict.brand}
         </Link>
-        <Link href={`/${locale}#services`} className="btn btn-primary">
-          {dict.bookVisit}
-        </Link>
+        <nav className="flex items-center gap-5 md:gap-8">
+          {/* Brand + link + CTA do not fit a phone header; no mobile menu exists yet. */}
+          <Link href={`/${locale}/services`} className="link hidden text-small font-medium sm:inline">
+            {dict.nav.services}
+          </Link>
+          <Link href={`/${locale}#services`} className="btn btn-primary">
+            {dict.bookVisit}
+          </Link>
+        </nav>
       </div>
     </header>
   );
