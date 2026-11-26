@@ -1,35 +1,52 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { lang } from "next/root-params";
+import { DM_Sans, Newsreader } from "next/font/google";
 import { locales } from "@/i18n/config";
+import { SiteHeader } from "@/components/site-header";
+import { getDictionary, getLocale } from "@/i18n/dictionaries";
 import "../globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+// latin-ext carries the Polish diacritics (ą ć ę ł ń ó ś ź ż).
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
+  subsets: ["latin", "latin-ext"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
+  subsets: ["latin", "latin-ext"],
 });
 
-export const metadata: Metadata = {
-  title: "Nil Dental Studio",
-  description: "Nil Dental Studio",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const dict = await getDictionary();
+  return {
+    title: dict.meta.title,
+    description: dict.meta.description,
+  };
+}
 
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
 }
 
 export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
+  const [locale, dict] = await Promise.all([getLocale(), getDictionary()]);
   return (
     <html
-      lang={await lang()}
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      lang={locale}
+      className={`${newsreader.variable} ${dmSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="flex min-h-full flex-col">
+        <a
+          href="#main"
+          className="btn btn-primary sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50"
+        >
+          {dict.a11y.skipToContent}
+        </a>
+        <SiteHeader locale={locale} dict={dict.common} />
+        <main id="main" className="flex-1">
+          {children}
+        </main>
+      </body>
     </html>
   );
 }

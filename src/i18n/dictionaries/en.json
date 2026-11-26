@@ -1,4 +1,25 @@
 {
+  "meta": {
+    "title": "Nil Dental Studio",
+    "description": "Calm, unhurried dental care. Browse treatments and book your visit online."
+  },
+  "a11y": {
+    "skipToContent": "Skip to main content"
+  },
+  "common": {
+    "brand": "Nil Dental Studio",
+    "homeLink": "Nil Dental Studio, home page",
+    "bookVisit": "Book a visit",
+    "days": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ]
+  },
   "home": {
     "tagline": "Dental care, booked online."
   }

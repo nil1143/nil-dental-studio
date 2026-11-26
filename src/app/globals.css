@@ -1,26 +1,345 @@
 @import "tailwindcss";
 
+/*
+ * Nil Dental Studio design system.
+ * Every visual decision lives here as a token (@theme) or a named primitive (@utility).
+ * Components compose these; they do not invent colours, sizes or radii inline.
+ */
+
+@theme {
+  /* Reset Tailwind's default palette: only the tokens below exist. */
+  --color-*: initial;
+
+  /* Colour — warm paper surfaces, deep teal ink, one calm accent. */
+  --color-paper: #f7f6f2; /* page background */
+  --color-surface: #ffffff; /* cards, raised panels */
+  --color-mist: #eef1ec; /* quiet alternate section background */
+  --color-ink: #1f2a2c; /* primary text */
+  --color-ink-muted: #56625f; /* secondary text, ≥4.5:1 on paper and mist */
+  --color-line: #dcdfd9; /* hairline borders and dividers */
+  --color-line-strong: #b9c0ba; /* outline button and input borders */
+  --color-primary: #2f5d5a; /* primary actions, links on hover, focus ring */
+  --color-primary-hover: #244a48;
+  --color-on-primary: #f7f6f2; /* text on primary */
+  --color-accent: #a9c2b6; /* soft sage highlight, decorative only, never text */
+  --color-danger: #a23b2f; /* validation errors */
+  --color-white: #ffffff;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  /* Typography — serif display, neutral sans body (fonts wired in [lang]/layout.tsx). */
+  --font-display: var(--font-newsreader), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+
+  /* Fluid type scale: min at 360px viewport, max at ~1280px. */
+  --text-display: clamp(2.75rem, 1.9rem + 3.6vw, 5rem);
+  --text-display--line-height: 1.04;
+  --text-display--letter-spacing: -0.025em;
+  --text-h1: clamp(2.25rem, 1.75rem + 2.2vw, 3.5rem);
+  --text-h1--line-height: 1.08;
+  --text-h1--letter-spacing: -0.02em;
+  --text-h2: clamp(1.75rem, 1.45rem + 1.4vw, 2.5rem);
+  --text-h2--line-height: 1.15;
+  --text-h2--letter-spacing: -0.015em;
+  --text-h3: clamp(1.25rem, 1.15rem + 0.45vw, 1.5rem);
+  --text-h3--line-height: 1.3;
+  --text-h3--letter-spacing: -0.01em;
+  --text-lead: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+  --text-lead--line-height: 1.6;
+  --text-body: 1rem;
+  --text-body--line-height: 1.65;
+  --text-small: 0.875rem;
+  --text-small--line-height: 1.5;
+  --text-eyebrow: 0.75rem;
+  --text-eyebrow--line-height: 1.4;
+  --text-eyebrow--letter-spacing: 0.16em;
+
+  /* Layout widths. */
+  --container-page: 80rem; /* full content width */
+  --container-narrow: 48rem; /* forms, single-column flows */
+  --container-measure: 66ch; /* comfortable reading line */
+
+  /* Radii — soft, never sharp. */
+  --radius-sm: 0.375rem; /* inputs, small chips */
+  --radius-card: 1.25rem; /* cards, panels */
+  --radius-media: 1.75rem; /* photography */
+
+  /* Elevation — barely there; borders do most of the separating. */
+  --shadow-soft: 0 1px 2px rgb(31 42 44 / 0.04), 0 12px 32px -16px rgb(31 42 44 / 0.14);
+
+  /* Image ratios. */
+  --aspect-portrait: 4 / 5;
+  --aspect-landscape: 3 / 2;
+  --aspect-wide: 16 / 9;
+
+  --ease-calm: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Spacing rhythm that is not a single Tailwind step lives as plain custom properties. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+  --gutter: 1.25rem; /* page side padding: 20px phone → 40px tablet → 64px desktop */
+  --section-space: clamp(4rem, 2.75rem + 5.5vw, 8rem); /* vertical padding of a page section */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@media (width >= 48rem) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --gutter: 2.5rem;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@media (width >= 80rem) {
+  :root {
+    --gutter: 4rem;
+  }
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem; /* anchored sections clear the sticky header */
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-wrap: balance;
+  }
+
+  h1 {
+    font-size: var(--text-h1);
+    line-height: var(--text-h1--line-height);
+    letter-spacing: var(--text-h1--letter-spacing);
+  }
+
+  h2 {
+    font-size: var(--text-h2);
+    line-height: var(--text-h2--line-height);
+    letter-spacing: var(--text-h2--letter-spacing);
+  }
+
+  h3,
+  h4 {
+    font-size: var(--text-h3);
+    line-height: var(--text-h3--line-height);
+    letter-spacing: var(--text-h3--letter-spacing);
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-ink);
+  }
+
+  /* One visible focus style for every interactive element. */
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ---------- Layout primitives ---------- */
+
+/* Centred page container with responsive side gutters. */
+@utility shell {
+  width: 100%;
+  max-width: calc(var(--container-page) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Same, for single-column content (forms, booking steps). */
+@utility shell-narrow {
+  width: 100%;
+  max-width: calc(var(--container-narrow) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Vertical rhythm of a page section. Pair with bg-mist to alternate bands. */
+@utility section {
+  padding-block: var(--section-space);
+}
+
+/* Readable line length for running text. */
+@utility measure {
+  max-width: var(--container-measure);
+}
+
+/* ---------- Type primitives ---------- */
+
+@utility headline {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: var(--text-display);
+  line-height: var(--text-display--line-height);
+  letter-spacing: var(--text-display--letter-spacing);
+  text-wrap: balance;
+}
+
+/* Small tracked-out label above a heading. */
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--text-eyebrow);
+  line-height: var(--text-eyebrow--line-height);
+  letter-spacing: var(--text-eyebrow--letter-spacing);
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+/* Quieter sibling of `eyebrow`: names a value rather than introducing a section (dt, meta). */
+@utility label {
+  font-family: var(--font-sans);
+  font-size: var(--text-eyebrow);
+  line-height: var(--text-eyebrow--line-height);
+  letter-spacing: var(--text-eyebrow--letter-spacing);
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+
+/*
+ * Title of a supporting list item: sans, body size, so it sits below the serif headings.
+ * Content cards (a service, a panel) keep the serif `h3` instead.
+ */
+@utility item-title {
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: normal;
+}
+
+/* Intro paragraph under a heading. */
+@utility lead {
+  font-size: var(--text-lead);
+  line-height: var(--text-lead--line-height);
+  color: var(--color-ink-muted);
+}
+
+/* Inline text link: quiet underline that warms to primary on hover. */
+@utility link {
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  text-decoration-color: var(--color-line-strong);
+  transition: color 200ms var(--ease-calm), text-decoration-color 200ms var(--ease-calm);
+
+  &:hover {
+    color: var(--color-primary);
+    text-decoration-color: currentColor;
+  }
+}
+
+/* ---------- Buttons: `btn` + one variant ---------- */
+
+@utility btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 2.75rem; /* 44px touch target */
+  padding: 0.75rem 1.75rem;
+  border: 1px solid transparent;
+  border-radius: 9999px;
+  font-family: var(--font-sans);
+  font-size: var(--text-small);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color 250ms var(--ease-calm),
+    border-color 250ms var(--ease-calm),
+    color 250ms var(--ease-calm),
+    box-shadow 250ms var(--ease-calm);
+
+  &:focus-visible {
+    border-radius: 9999px;
+  }
+
+  &:disabled,
+  &[aria-disabled="true"] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+@utility btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+
+  &:hover {
+    background-color: var(--color-primary-hover);
+    box-shadow: var(--shadow-soft);
+  }
+}
+
+@utility btn-secondary {
+  background-color: transparent;
+  border-color: var(--color-line-strong);
+  color: var(--color-ink);
+
+  &:hover {
+    border-color: var(--color-ink);
+    background-color: rgb(31 42 44 / 0.04);
+  }
+}
+
+/* ---------- Surfaces ---------- */
+
+@utility card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+}
+
+/* Rounded photography; pair with aspect-portrait / aspect-landscape and next/image `fill`. */
+@utility media {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-media);
+  background-color: var(--color-mist);
+}
+
+/* Hairline divider. */
+@utility rule {
+  border: 0;
+  border-top: 1px solid var(--color-line);
 }

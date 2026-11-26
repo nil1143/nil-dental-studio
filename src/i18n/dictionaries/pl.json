@@ -1,4 +1,11 @@
 {
+  "meta": {
+    "title": "Nil Dental Studio",
+    "description": "Spokojna, niespieszna opieka stomatologiczna. Przejrzyj zabiegi i zarezerwuj wizytę online."
+  },
+  "a11y": {
+    "skipToContent": "Przejdź do treści głównej"
+  },
   "home": {
     "tagline": "Opieka stomatologiczna, rezerwacja online."
   }
