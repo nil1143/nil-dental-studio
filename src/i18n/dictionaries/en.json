@@ -10,17 +10,111 @@
     "brand": "Nil Dental Studio",
     "homeLink": "Nil Dental Studio, home page",
     "bookVisit": "Book a visit",
-    "days": [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-      "Sunday"
-    ]
+    "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
   },
   "home": {
-    "tagline": "Dental care, booked online."
+    "hero": {
+      "eyebrow": "Dental care in Warsaw",
+      "title": "Unhurried dental care, in a room that feels calm.",
+      "lead": "Choose a treatment, pick a time that suits you and pay securely online. We explain every step before we begin.",
+      "secondaryCta": "See opening hours",
+      "imageAlt": "Placeholder image of a bright, quiet treatment room",
+      "assurances": ["Prices shown upfront", "Appointments six days a week", "English and Polish spoken"]
+    },
+    "services": {
+      "eyebrow": "Treatments",
+      "title": "Care for every stage, from check-ups to implants",
+      "lead": "Every price below is the starting price of the visit. If your treatment needs more, we tell you before we continue.",
+      "duration": "{minutes} min",
+      "durationLabel": "Duration",
+      "priceLabel": "Price",
+      "price": "from {price}",
+      "items": {
+        "checkup": {
+          "name": "Check-up and consultation",
+          "description": "A full examination, a clear explanation of what we see and a plan you can take home."
+        },
+        "hygiene": {
+          "name": "Hygiene and cleaning",
+          "description": "Scaling, polishing and practical advice to keep your gums healthy between visits."
+        },
+        "fillings": {
+          "name": "Fillings",
+          "description": "Tooth-coloured fillings that restore strength and blend with your natural teeth."
+        },
+        "whitening": {
+          "name": "Teeth whitening",
+          "description": "Gentle in-clinic whitening, planned around your sensitivity and the result you want."
+        },
+        "implants": {
+          "name": "Implant consultation",
+          "description": "An unhurried assessment of whether implants suit you, with costs and timings in writing."
+        },
+        "emergency": {
+          "name": "Urgent appointment",
+          "description": "Toothache, a broken tooth or swelling. We keep time free every day for urgent care."
+        }
+      }
+    },
+    "steps": {
+      "eyebrow": "How a visit works",
+      "title": "Four simple steps, no surprises",
+      "items": [
+        {
+          "title": "Choose your treatment",
+          "body": "See what each visit includes, how long it takes and what it costs."
+        },
+        {
+          "title": "Pick a time and pay",
+          "body": "Choose a free slot and pay securely online. Your confirmation arrives straight away."
+        },
+        {
+          "title": "Come in and relax",
+          "body": "Arrive a few minutes early. We talk you through everything before any treatment starts."
+        },
+        {
+          "title": "Leave with a plan",
+          "body": "You go home with clear aftercare advice and, if needed, a suggested next visit."
+        }
+      ]
+    },
+    "trust": {
+      "eyebrow": "Why patients choose us",
+      "title": "Care you can understand and rely on",
+      "lead": "We want every patient to feel informed and at ease, whether it is a routine check-up or your first visit in years.",
+      "imageAlt": "Placeholder image of the clinic's calm waiting area",
+      "items": [
+        {
+          "title": "Clear, fixed prices",
+          "body": "You see the price before you book, and nothing is added without your agreement."
+        },
+        {
+          "title": "Strict hygiene standards",
+          "body": "Instruments are sterilised for every patient, and single-use items are used wherever possible."
+        },
+        {
+          "title": "Time to ask questions",
+          "body": "Appointments are planned with room to talk, so nobody feels rushed in the chair."
+        },
+        {
+          "title": "Your data stays private",
+          "body": "We collect only what your visit needs and handle it under GDPR."
+        }
+      ]
+    },
+    "visit": {
+      "eyebrow": "Visit us",
+      "title": "Opening hours and location",
+      "hoursTitle": "Opening hours",
+      "hoursNote": "Urgent appointments are available every day we are open.",
+      "closed": "Closed",
+      "timeRange": "{opens} – {closes}",
+      "locationTitle": "Where to find us",
+      "addressLabel": "Address",
+      "phoneLabel": "Phone",
+      "emailLabel": "Email",
+      "directions": "Five minutes on foot from the nearest metro station, with step-free access at the entrance.",
+      "mapAlt": "Placeholder map showing the clinic's location"
+    }
   }
 }
