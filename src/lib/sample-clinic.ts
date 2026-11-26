@@ -6,7 +6,7 @@ import type { Dictionary } from "@/i18n/dictionaries";
  * Visible text for each entry lives in the dictionaries, keyed by slug.
  */
 
-export type ServiceSlug = keyof Dictionary["home"]["services"]["items"];
+export type ServiceSlug = keyof Dictionary["services"]["items"];
 
 export const sampleServices: {
   slug: ServiceSlug;
@@ -16,10 +16,18 @@ export const sampleServices: {
   { slug: "checkup", durationMinutes: 30, priceCents: 20000 },
   { slug: "hygiene", durationMinutes: 45, priceCents: 30000 },
   { slug: "fillings", durationMinutes: 45, priceCents: 35000 },
+  { slug: "root-canals", durationMinutes: 90, priceCents: 90000 },
+  { slug: "extractions", durationMinutes: 45, priceCents: 40000 },
   { slug: "whitening", durationMinutes: 60, priceCents: 120000 },
+  { slug: "veneers", durationMinutes: 60, priceCents: 160000 },
   { slug: "implants", durationMinutes: 60, priceCents: 25000 },
   { slug: "emergency", durationMinutes: 30, priceCents: 25000 },
 ];
+
+// One service by URL slug, or undefined for an unknown slug.
+export function findSampleService(slug: string) {
+  return sampleServices.find((service) => service.slug === slug);
+}
 
 // ISO day of week (1 = Monday). Clinic wall-clock time, Europe/Warsaw. null = closed.
 export const sampleHours: { dayOfWeek: number; opens: string | null; closes: string | null }[] = [
