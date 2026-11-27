@@ -4,9 +4,10 @@ import { SectionHeading } from "@/components/section-heading";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { fill } from "@/i18n/fill";
-import { sampleContact, sampleHours } from "@/lib/sample-clinic";
+import { sampleContact } from "@/lib/sample-clinic";
+import { getWorkingHours } from "@/lib/working-hours";
 
-export function Visit({
+export async function Visit({
   locale,
   dict,
   days,
@@ -17,6 +18,7 @@ export function Visit({
   days: string[];
   bookVisit: string;
 }) {
+  const hours = await getWorkingHours();
   return (
     <section id="visit" aria-labelledby="visit-title" className="section bg-mist">
       <div className="shell">
@@ -25,7 +27,7 @@ export function Visit({
           <div className="card flex flex-col p-7 md:p-8">
             <h3>{dict.hoursTitle}</h3>
             <dl className="mt-6 lg:mt-8">
-              {sampleHours.map((day) => (
+              {hours.map((day) => (
                 <div
                   key={day.dayOfWeek}
                   className="flex justify-between gap-4 border-b border-line py-3 last:border-b-0 lg:py-4"

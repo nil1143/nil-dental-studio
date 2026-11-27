@@ -5,29 +5,27 @@ import { notFound } from "next/navigation";
 import { getDictionary, getLocale } from "@/i18n/dictionaries";
 import { fill } from "@/i18n/fill";
 import { formatPrice } from "@/lib/format";
-import { findSampleService, sampleServices } from "@/lib/sample-clinic";
+import { getService, getServiceSlugs } from "@/lib/services";
 
-// Every known slug is prerendered; any other slug renders the 404 page.
-export function generateStaticParams() {
-  return sampleServices.map(({ slug }) => ({ slug }));
+// Every active slug is prerendered; any other slug renders the 404 page. Needs a seeded DB at build time.
+export async function generateStaticParams() {
+  return (await getServiceSlugs()).map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
   params,
 }: PageProps<"/[lang]/services/[slug]">): Promise<Metadata> {
-  const service = findSampleService((await params).slug);
+  const [locale, { slug }, { services }] = await Promise.all([getLocale(), params, getDictionary()]);
+  const service = await getService(locale, slug);
   if (!service) return {};
-  const { services } = await getDictionary();
-  const text = services.items[service.slug];
-  return { title: fill(services.detail.metaTitle, { name: text.name }), description: text.description };
+  return { title: fill(services.detail.metaTitle, { name: service.name }), description: service.description };
 }
 
 export default async function ServicePage({ params }: PageProps<"/[lang]/services/[slug]">) {
-  const service = findSampleService((await params).slug);
+  const [locale, { slug }, { services, common }] = await Promise.all([getLocale(), params, getDictionary()]);
+  const service = await getService(locale, slug);
   if (!service) notFound();
 
-  const [locale, { services, common }] = await Promise.all([getLocale(), getDictionary()]);
-  const text = services.items[service.slug];
   const t = services.detail;
 
   return (
@@ -42,9 +40,9 @@ export default async function ServicePage({ params }: PageProps<"/[lang]/service
           <header className="lg:col-span-7">
             <Image src={`/services/${service.slug}.svg`} alt="" width={72} height={72} />
             <h1 id="service-title" className="mt-6">
-              {text.name}
+              {service.name}
             </h1>
-            <p className="lead measure mt-5">{text.description}</p>
+            <p className="lead measure mt-5">{service.description}</p>
           </header>
 
           {/* Summary card: after the intro on phones, in the right column (and sticky) on desktop. */}
@@ -81,7 +79,7 @@ export default async function ServicePage({ params }: PageProps<"/[lang]/service
                 {t.aboutTitle}
               </h2>
               <div className="measure mt-4 space-y-4 text-ink-muted">
-                {text.details.map((paragraph) => (
+                {service.details.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
               </div>
@@ -94,7 +92,7 @@ export default async function ServicePage({ params }: PageProps<"/[lang]/service
                 {t.expectTitle}
               </h2>
               <ol className="mt-6 grid gap-4">
-                {text.expect.map((item, index) => (
+                {service.expect.map((item, index) => (
                   <li key={item} className="flex gap-4">
                     <span aria-hidden="true" className="font-display text-h3 leading-none text-primary tabular-nums">
                       {String(index + 1).padStart(2, "0")}
