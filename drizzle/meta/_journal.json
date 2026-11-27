@@ -1,0 +1,20 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1795802936992,
+      "tag": "0000_clinic",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1795802939436,
+      "tag": "0001_working_hours_fixed_rows",
+      "breakpoints": true
+    }
+  ]
+}
