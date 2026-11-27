@@ -1,3 +1,4 @@
+import { getSessionCookie } from "better-auth/cookies";
 import { NextResponse, type NextRequest } from "next/server";
 import { defaultLocale, hasLocale, locales, type Locale } from "@/i18n/config";
 
@@ -14,12 +15,27 @@ function preferredLocale(header: string | null): Locale {
   return match ? (match.base as Locale) : defaultLocale;
 }
 
+// /{locale}/account/** and /{locale}/admin/** need a signed-in user.
+const protectedPath = new RegExp(`^/(${locales.join("|")})/(account|admin)(/|$)`);
+
 export function proxy(request: NextRequest) {
-  const { pathname } = request.nextUrl;
+  const { pathname, search } = request.nextUrl;
   const hasLocalePrefix = locales.some(
     (l) => pathname === `/${l}` || pathname.startsWith(`/${l}/`),
   );
-  if (hasLocalePrefix) return;
+
+  if (hasLocalePrefix) {
+    // Convenience only: a missing cookie skips straight to sign-in with a real redirect. The
+    // security check is requireUser()/requireAdmin() in the page, since a cookie can be forged.
+    const locale = protectedPath.exec(pathname)?.[1];
+    if (locale && !getSessionCookie(request)) {
+      const url = request.nextUrl.clone();
+      url.pathname = `/${locale}/sign-in`;
+      url.search = `?next=${encodeURIComponent(pathname + search)}`;
+      return NextResponse.redirect(url);
+    }
+    return;
+  }
 
   const locale = preferredLocale(request.headers.get("accept-language"));
   const url = request.nextUrl.clone();
